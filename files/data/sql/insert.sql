@@ -1,0 +1,1 @@
+INSERT INTO "files" ("id", "name", "size", "expires") VALUES (:file_id, :name, :size, :expiers);

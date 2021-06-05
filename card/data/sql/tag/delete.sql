@@ -1,0 +1,1 @@
+DELETE FROM "tag" WHERE "id" = :tag_id

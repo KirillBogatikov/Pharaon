@@ -1,0 +1,173 @@
+version: "3.3"
+networks:
+  internal:
+    internal: true
+  external:
+services:
+  database:
+    image: postgres:13.2-alpine
+    volumes:
+      - ~/pharaon/postgresql:/var/lib/postgresql/data
+    env_file:
+      - database.env
+      - global.env
+    networks:
+      - internal
+    ports:
+      - 5432
+  mongodb:
+    image: 192.168.5.1:49004/pharaon/mongodb:latest
+    env_file:
+      - global.env
+    networks:
+      - internal
+      - external
+    volumes:
+      - ~/pharaon/mongodb:/data/db
+    ports:
+      - "27017:27017"
+  proxy:
+    image: 192.168.5.1:49004/pharaon/proxy:latest
+    env_file:
+      - global.env
+    networks:
+      - internal
+      - external
+    ports:
+      - "80:80"
+  migration:
+    image: 192.168.5.1:49004/pharaon/migration:latest
+    depends_on:
+      - database
+    env_file:
+      - global.env
+    networks:
+      - internal
+    ports:
+      - 80
+  auth:
+    image: 192.168.5.1:49004/pharaon/auth:latest
+    depends_on:
+      - migration
+    env_file:
+      - global.env
+    networks:
+      - internal
+    ports:
+      - 80
+  personal:
+    image: 192.168.5.1:49004/pharaon/personal:latest
+    depends_on:
+      - migration
+    env_file:
+      - global.env
+    networks:
+      - internal
+    ports:
+      - 80
+  user:
+    image: 192.168.5.1:49004/pharaon/user:latest
+    depends_on:
+      - personal
+      - auth
+    env_file:
+      - global.env
+    networks:
+      - internal
+    ports:
+      - 80
+  card:
+    image: 192.168.5.1:49004/pharaon/card:latest
+    depends_on:
+      - user
+    env_file:
+      - global.env
+    networks:
+      - internal
+    ports:
+      - 80
+  desk:
+    image: 192.168.5.1:49004/pharaon/desk:latest
+    depends_on:
+      - card
+    env_file:
+      - global.env
+    networks:
+      - internal
+    ports:
+      - 80
+  comment:
+    image: 192.168.5.1:49004/pharaon/comment:latest
+    depends_on:
+      - database
+    env_file:
+      - global.env
+    networks:
+      - internal
+    ports:
+      - 80
+  files:
+    image: 192.168.5.1:49004/pharaon/files:latest
+    depends_on:
+      - database
+    env_file:
+      - global.env
+    networks:
+      - internal
+    ports:
+      - 80
+  app:
+    image: 192.168.5.1:49004/pharaon/app:latest
+    depends_on:
+      - database
+      - mongodb
+    env_file:
+      - global.env
+    networks:
+      - internal
+    ports:
+      - 80
+  feedback:
+    image: 192.168.5.1:49004/pharaon/feedback:latest
+    depends_on:
+      - database
+      - mongodb
+    env_file:
+      - global.env
+    networks:
+      - internal
+    ports:
+      - 80
+  analytics:
+    image: 192.168.5.1:49004/pharaon/analytics:latest
+    depends_on:
+      - database
+      - mongodb
+    env_file:
+      - global.env
+    networks:
+      - internal
+    ports:
+      - 80
+  uac:
+    image: 192.168.5.1:49004/pharaon/uac:latest
+    depends_on:
+      - database
+      - mongodb
+    env_file:
+      - global.env
+    networks:
+      - internal
+    ports:
+      - 80
+  web:
+    image: 192.168.5.1:49004/pharaon/web:latest
+    depends_on:
+      - database
+      - mongodb
+    env_file:
+      - global.env
+    networks:
+      - internal
+    ports:
+      - 80

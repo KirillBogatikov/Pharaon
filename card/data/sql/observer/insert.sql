@@ -1,0 +1,1 @@
+INSERT INTO "observer" ("id", "card_id", "user_id") VALUES (:observer_id, :card_id, :user_id)

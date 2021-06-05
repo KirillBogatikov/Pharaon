@@ -1,0 +1,12 @@
+HTML, BODY {
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    background: var(--color-secondary);
+}
+
+.promote-page-container {
+    height: 100%;
+}

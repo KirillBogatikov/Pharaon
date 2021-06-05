@@ -1,0 +1,1 @@
+DELETE FROM "restore_token" WHERE "expires" < $1

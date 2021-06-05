@@ -1,0 +1,1 @@
+INSERT INTO "card_tag" ("id", "card_id", "tag_id") VALUES (:card_tag_id, :card_id, :tag_id)

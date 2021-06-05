@@ -1,0 +1,75 @@
+services:
+  - name: "proxy"
+    http:
+      bind_address: ":80"
+      api_url: "http://192.168.5.2"
+  - name: "migration"
+    db:
+      host: "database:5432"
+      name: "postgres"
+      user: "postgres"
+      password: "LSb4mHepPGSf47GK"
+      max_connections: 2
+    http:
+      bind_address: ":80"
+      api_url: "http://migration"
+  - name: "auth"
+    db:
+      host: "database:5432"
+      name: "auth"
+      user: "auth"
+      password: "dbm6jwN6mEhbXxCu"
+      max_connections: 5
+    http:
+      bind_address: ":80"
+      api_url: "http://auth"
+  - name: "personal"
+    db:
+      host: "database:5432"
+      name: "personal"
+      user: "personal"
+      password: "uzVaKkvJqza942GK"
+      max_connections: 5
+    http:
+      bind_address: ":80"
+      api_url: "http://personal"
+  - name: "user"
+    db:
+      host: "database:5432"
+      name: "user"
+      user: "user"
+      password: "QRq97FV9AwFzxPcY"
+      max_connections: 5
+    http:
+      bind_address: ":80"
+      api_url: "http://user"
+  - name: "card"
+    db:
+      host: "database:5432"
+      name: "card"
+      user: "card"
+      password: "WAayUq8DZErvEd7c"
+      max_connections: 5
+    http:
+      bind_address: ":80"
+      api_url: "http://card"
+  - name: "desk"
+    db:
+      host: "database:5432"
+      name: "desk"
+      user: "desk"
+      password: "Z5sKMgMYFv8SrET6"
+      max_connections: 5
+    http:
+      bind_address: ":80"
+      api_url: "http://desk"
+  - name: "files"
+    db:
+      host: "localhost:5432"
+      name: "files"
+      user: "files"
+      password: "Vgna8F2qWwBn8eVF"
+      max_connections: 5
+    http:
+      bind_address: ":80"
+      api_url: "http://files"

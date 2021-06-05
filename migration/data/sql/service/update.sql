@@ -1,0 +1,1 @@
+UPDATE "service" SET "version" = $1 WHERE "name" = $2
