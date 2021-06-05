@@ -1,0 +1,75 @@
+services:
+  - name: "proxy"
+    http:
+      bind_address: ":49001"
+      api_url: "http://localhost:49001"
+  - name: "migration"
+    db:
+      host: "localhost:5432"
+      name: "postgres"
+      user: "postgres"
+      password: "postgres"
+      max_connections: 2
+    http:
+      bind_address: ":49002"
+      api_url: "http://localhost:49002"
+  - name: "auth"
+    db:
+      host: "localhost:5432"
+      name: "auth"
+      user: "auth"
+      password: "auth"
+      max_connections: 5
+    http:
+      bind_address: ":49003"
+      api_url: "http://localhost:49003"
+  - name: "personal"
+    db:
+      host: "localhost:5432"
+      name: "personal"
+      user: "personal"
+      password: "personal"
+      max_connections: 5
+    http:
+      bind_address: ":49004"
+      api_url: "http://localhost:49004"
+  - name: "user"
+    db:
+      host: "localhost:5432"
+      name: "user"
+      user: "user"
+      password: "user"
+      max_connections: 5
+    http:
+      bind_address: ":49005"
+      api_url: "http://localhost:49005"
+  - name: "card"
+    db:
+      host: "localhost:5432"
+      name: "card"
+      user: "card"
+      password: "card"
+      max_connections: 5
+    http:
+      bind_address: ":49006"
+      api_url: "http://localhost:49006"
+  - name: "desk"
+    db:
+      host: "localhost:5432"
+      name: "desk"
+      user: "desk"
+      password: "desk"
+      max_connections: 5
+    http:
+      bind_address: ":49007"
+      api_url: "http://localhost:49007"
+  - name: "files"
+    db:
+      host: "localhost:5432"
+      name: "files"
+      user: "files"
+      password: "files"
+      max_connections: 5
+    http:
+      bind_address: ":49008"
+      api_url: "http://localhost:49008"

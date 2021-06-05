@@ -1,0 +1,31 @@
+version: "3.3"
+networks:
+  external:
+services:
+  jenkins:
+    container_name: "jenkins-server"
+    privileged: true
+    user: root
+    image: jenkins/jenkins:lts
+    networks:
+      - external
+    volumes:
+      - ~/pharaon/jenkins:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/local/bin/docker:/usr/local/bin/docker
+    ports:
+      - "49002:8080"
+      - "49003:50000"
+  registry:
+    container_name: "registry"
+    image: registry:2
+    restart: always
+    env_file:
+      - registry.env
+    networks:
+      - external
+    volumes:
+      - ~/pharaon/registry/data:/var/lib/registry
+      - ~/pharaon/registry/auth:/auth
+    ports:
+      - "49004:5000"

@@ -1,0 +1,9 @@
+services:
+  - name: "auth"
+    hidden:
+      - "auth"
+      - "validate"
+      - "user/login"
+      - "user/signup"
+      - "history/.*"
+      - "token/.*"

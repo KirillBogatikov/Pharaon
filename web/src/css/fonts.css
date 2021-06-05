@@ -1,0 +1,11 @@
+@font-face {
+    src: url("../fonts/zekton bold.otf");
+    font-family: "Zekton";
+    font-weight: bold;
+}
+
+@font-face {
+    src: url("../fonts/zekton regular.ttf");
+    font-family: "Zekton";
+    font-weight: normal;
+}

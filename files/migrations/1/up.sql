@@ -1,0 +1,1 @@
+CREATE TYPE "action_type" AS ENUM ('Upload', 'Download', 'Delete');

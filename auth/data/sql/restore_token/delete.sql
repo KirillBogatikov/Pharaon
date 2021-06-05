@@ -1,0 +1,1 @@
+DELETE FROM "restore_token" WHERE "id" = $1

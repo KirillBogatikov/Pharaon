@@ -1,0 +1,9 @@
+* {
+    --color-primary: #22284C;
+    --color-secondary: #4E5476;
+    --text-color-primary: #F6F5F3;
+    --shadow-color: rgba(0, 0, 0, 0.75);
+    --card-shadow: 5px 5px 10px var(--shadow-color);
+    --card-title-shadow: 0px 2px 5px var(--shadow-color);
+    font-family: "Zekton";
+}

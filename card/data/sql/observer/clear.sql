@@ -1,0 +1,1 @@
+DELETE FROM "observer" WHERE "card_id" = :card_id

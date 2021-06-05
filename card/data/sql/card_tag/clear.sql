@@ -1,0 +1,1 @@
+DELETE FROM "card_tag" WHERE "card_id" = :card_id
